@@ -1,0 +1,8 @@
+{
+  "name": "be-wiser",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "9d0817bf"
+}
