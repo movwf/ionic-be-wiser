@@ -4,22 +4,20 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonIcon,
   IonButtons,
+  IonBackButton,
 } from "@ionic/react";
-import List from "../components/PersonList/List";
-import { menuOutline } from "ionicons/icons";
 import "./Profiles.css";
 
-const Profiles: React.FC = () => {
+const Test: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonButtons slot="end">
-            <IonIcon icon={menuOutline} />
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/" />
           </IonButtons>
-          <IonTitle>Profiles</IonTitle>
+          <IonTitle>{"{profile.name}"}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -28,10 +26,12 @@ const Profiles: React.FC = () => {
             <IonTitle size="large">Tab 1</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <List />
+        <div>
+          <h1>Test</h1>
+        </div>
       </IonContent>
     </IonPage>
   );
 };
 
-export default Profiles;
+export default Test;
