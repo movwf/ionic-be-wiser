@@ -8,6 +8,7 @@ const techs = [
     description:
       "A powerful Javascript framework for building single page apps. Angular is open source, and maintained by Google.",
     color: "#E63135",
+    url: "/test",
   },
   {
     title: "CSS3",
@@ -15,6 +16,7 @@ const techs = [
     description:
       "The latest version of cascading stylesheets - the styling language of the web!",
     color: "#0CA9EA",
+    url: "/test2",
   },
 ];
 
@@ -23,7 +25,7 @@ const List: React.FC = () => {
     <>
       <IonList>
         {techs.map((tech) => (
-          <IonItem button key={Math.random()} onClick={() => {}}>
+          <IonItem button key={Math.random()} routerLink="/test">
             <IonIcon slot="end" icon={chevronForwardOutline}></IonIcon>
             <IonLabel>{tech.title}</IonLabel>
           </IonItem>
