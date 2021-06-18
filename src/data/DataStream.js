@@ -14,6 +14,8 @@ export const socketInit = () => {
 export const getSocketData = (cb, timeout) => {
   if (!socket) return false;
 
+  console.log("Socket : ", socket);
+
   socket.on("userList", (data) => {
     cb(data.results[0]);
   });

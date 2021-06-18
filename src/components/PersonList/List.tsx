@@ -19,7 +19,7 @@ const List: React.FC = () => {
 
     getSocketData((data: any) => {
       appendUserData(data);
-    }, 5000);
+    }, 10000);
 
     updateDataListState(setData, 5000);
   }, []);
@@ -32,9 +32,9 @@ const List: React.FC = () => {
     <>
       <IonList>
         {data.map((user) => (
-          <IonItem button key={user.uuid} routerLink="/test">
+          <IonItem button key={Math.random()} routerLink="/test">
             <IonIcon slot="end" icon={chevronForwardOutline}></IonIcon>
-            <IonLabel>{user.name + "," + user.age}</IonLabel>
+            <IonLabel>{user?.name + "," + user?.age}</IonLabel>
           </IonItem>
         ))}
       </IonList>

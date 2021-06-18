@@ -125,12 +125,14 @@ export const updateDataListState = (cb: any, updateFrequency: number) => {
   let prevState: IUserList[] = [userList[0]];
 
   const updateInterval = setInterval(() => {
-    console.log("Append(state) : ", userList[passIndex]);
+    if (userList.length > 1) {
+      console.log("Append(state) : ", userList[passIndex]);
 
-    prevState = [...prevState, userList[passIndex]];
-    cb(prevState);
+      prevState = [...prevState, userList[passIndex]];
+      cb(prevState);
 
-    passIndex++;
+      passIndex++;
+    }
 
     if (passIndex === userList.length) clearInterval(updateInterval);
   }, updateFrequency);
