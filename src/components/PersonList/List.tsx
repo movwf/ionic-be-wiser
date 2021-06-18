@@ -1,36 +1,42 @@
+import { useEffect, useState } from "react";
 import { IonItem, IonIcon, IonList, IonLabel } from "@ionic/react";
 import { chevronForwardOutline } from "ionicons/icons";
-
-const techs = [
-  {
-    title: "Angular",
-    icon: "angular",
-    description:
-      "A powerful Javascript framework for building single page apps. Angular is open source, and maintained by Google.",
-    color: "#E63135",
-    url: "/test",
-  },
-  {
-    title: "CSS3",
-    icon: "css3",
-    description:
-      "The latest version of cascading stylesheets - the styling language of the web!",
-    color: "#0CA9EA",
-    url: "/test2",
-  },
-];
+import {
+  createStore,
+  appendUserData,
+  updateDataListState,
+} from "../../data/Storage";
+import { getSocketData, socketInit } from "../../data/DataStream";
 
 const List: React.FC = () => {
+  const [data, setData] = useState([
+    { uuid: "default", name: "Sharon", age: 48 },
+  ]);
+  useEffect(() => {
+    createStore();
+
+    socketInit();
+
+    getSocketData((data: any) => {
+      appendUserData(data);
+    }, 5000);
+
+    updateDataListState(setData, 5000);
+  }, []);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <>
       <IonList>
-        {techs.map((tech) => (
-          <IonItem button key={Math.random()} routerLink="/test">
+        {data.map((user) => (
+          <IonItem button key={user.uuid} routerLink="/test">
             <IonIcon slot="end" icon={chevronForwardOutline}></IonIcon>
-            <IonLabel>{tech.title}</IonLabel>
+            <IonLabel>{user.name + "," + user.age}</IonLabel>
           </IonItem>
         ))}
-        ;
       </IonList>
     </>
   );
