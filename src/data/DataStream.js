@@ -22,6 +22,7 @@ export const getSocketData = (cb, timeout) => {
 
   setTimeout(() => {
     closeSocket();
+    console.log("Socket closed." + socket);
   }, timeout);
 };
 

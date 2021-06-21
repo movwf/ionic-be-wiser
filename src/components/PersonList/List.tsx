@@ -15,13 +15,13 @@ const List: React.FC = () => {
   useEffect(() => {
     createStore();
 
-    // socketInit();
+    socketInit();
 
-    // getSocketData((data: any) => {
-    //   appendUserData(data);
-    // }, 10000);
+    getSocketData((data: any) => {
+      appendUserData(data);
+    }, 10000);
 
-    // updateDataListState(setData, 5000);
+    updateDataListState(setData, 5000);
   }, []);
 
   useEffect(() => {
