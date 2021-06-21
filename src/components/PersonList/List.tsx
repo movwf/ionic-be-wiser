@@ -15,13 +15,13 @@ const List: React.FC = () => {
   useEffect(() => {
     createStore();
 
-    socketInit();
+    // socketInit();
 
-    getSocketData((data: any) => {
-      appendUserData(data);
-    }, 10000);
+    // getSocketData((data: any) => {
+    //   appendUserData(data);
+    // }, 10000);
 
-    updateDataListState(setData, 5000);
+    // updateDataListState(setData, 5000);
   }, []);
 
   useEffect(() => {
@@ -32,7 +32,11 @@ const List: React.FC = () => {
     <>
       <IonList>
         {data.map((user) => (
-          <IonItem button key={Math.random()} routerLink="/test">
+          <IonItem
+            button
+            key={Math.random()}
+            routerLink={"/profile/" + user.uuid}
+          >
             <IonIcon slot="end" icon={chevronForwardOutline}></IonIcon>
             <IonLabel>{user?.name + "," + user?.age}</IonLabel>
           </IonItem>

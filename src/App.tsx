@@ -11,7 +11,7 @@ import {
 import { IonReactRouter } from "@ionic/react-router";
 import { triangle } from "ionicons/icons";
 import Profiles from "./pages/Profiles";
-import Test from "./pages/Test";
+import ProfilePage from "./pages/ProfilePage";
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
@@ -32,30 +32,30 @@ import "@ionic/react/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/profiles">
-            <Profiles />
-          </Route>
-          <Route exact path="/test">
-            <Test />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/profiles" />
-          </Route>
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="tab1" href="/">
-            <IonIcon icon={triangle} />
-            <IonLabel>Profiles</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/profiles">
+              <Profiles />
+            </Route>
+            <Route path="/profile/:id" component={ProfilePage} />
+            <Route exact path="/">
+              <Redirect to="/profiles" />
+            </Route>
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="tab1" href="/">
+              <IonIcon icon={triangle} />
+              <IonLabel>Profiles</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;
